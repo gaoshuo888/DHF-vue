@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../../assets/logo.png">
+    <img alt="英那河流域图" src="../../assets/WatershedMap.jpg">
   </div>
 </template>
 
