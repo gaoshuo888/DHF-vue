@@ -50,7 +50,7 @@ export default {
                 E1: [
                     { required: true, message: '请输入 E1', trigger: 'blur' },
                     {
-                        message: '请输入有效的数字，范围为 1~10',
+                        message: '请输入有效的数字，范围为 1~10，小数点后最多两位',
                         trigger: 'blur',
                         pattern: /^([1-9](\.\d{1,2})?|10(\.0{1,2})?)$/ // 修正后的正则表达式
                     },
@@ -59,7 +59,7 @@ export default {
                 E2: [
                     { required: true, message: '请输入 E2', trigger: 'blur' },
                     {
-                        message: '请输入有效的数字，范围为 1~10',
+                        message: '请输入有效的数字，范围为 1~10，小数点后最多两位',
                         trigger: 'blur',
                         pattern: /^([1-9](\.\d{1,2})?|10(\.0{1,2})?)$/ // 修正后的正则表达式
                     },
