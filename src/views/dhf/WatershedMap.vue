@@ -20,11 +20,12 @@
                         <el-form ref="ruleForm" :model="ruleForm" :rules="rules" class="demo-ruleForm"
                                  label-width="100px">
                             <el-form-item label="E1：" prop="E1"><!--prop是表单项对应的数据对象的属性名,可用于编写对应规则-->
-                                <el-input v-model="ruleForm.E1" class="input-width"></el-input>
+                                <el-input v-model.number="ruleForm.E1" class="input-width"></el-input>
 <!--                                v-model 双向绑定了表单数据对象 ruleForm 中的 E1 字段。每次用户输入时，ruleForm.E1 会自动更新-->
+<!--                                v-model.number 是 Vue 的指令，用于将输入框的值转换为数字类型-->
                             </el-form-item>
                             <el-form-item label="E2：" prop="E2">
-                                <el-input v-model="ruleForm.E2" class="input-width"></el-input>
+                                <el-input v-model.number="ruleForm.E2" class="input-width"></el-input>
                             </el-form-item>
                             <el-form-item>
                                 <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
@@ -44,18 +45,18 @@ export default {
     name: "WatershedMap",
     data() {
         return {
-            ruleForm: {
-                E1: '', // 初始为空字符串，后续可以输入日期
-                E2: null, // 初始化为0.0，确保数据类型正确
+            ruleForm: {// 表单数据对象
+                E1: null,
+                E2: null,
             },
             rules: { // 表单验证的规则配置
                 E1: [
-                    { required: true, message: '请输入日期', trigger: 'blur' },
-                    { min: 1, max: 10, message: '长度在 1 到 10 个字符', trigger: 'blur' }
+                    { required: true, message: '请输入E1', trigger: 'blur' },
+                    { type: 'number', min: 1, max: 10, message: '请输入有效的数字，范围为1~10', trigger: 'blur' } // 合并数字和范围验证
                 ],
-                E2: [ // 数据类型Float
-                    { required: true, message: '请输入销量', trigger: 'blur' },
-                    { type: 'number', message: '请输入有效的数字', trigger: 'blur' } // 确保是数字
+                E2: [
+                    { required: true, message: '请输入E2', trigger: 'blur' }, // 修改为 '请输入E2'
+                    { type: 'number', min: 1, max: 10, message: '请输入有效的数字，范围为1~10', trigger: 'blur' } // 合并数字和范围验证
                 ]
             }
         };

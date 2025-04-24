@@ -56,7 +56,7 @@ const routes = [
         children: [
             {
                 path: '/dhfMap',
-                name: '英那河流域图',
+                name: '英那河流域',
                 component: () => import(/* webpackChunkName: "PageOne" */ '../views/dhf/WatershedMap.vue')
             }
 
