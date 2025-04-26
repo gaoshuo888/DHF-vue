@@ -14,6 +14,9 @@
             <el-col :span="12">
                 <h1 class="is-center">DHF模型参数</h1>
                 <el-form ref="ruleForm" :model="ruleForm" :rules="rules" class="demo-ruleForm" label-width="100px">
+                    <el-form-item label="ID：" prop="id">
+                        <el-input-number v-model="ruleForm.id" controls-position="right"></el-input-number>
+                    </el-form-item>
                     <el-form-item label="E1：" prop="E1">
                         <el-input-number v-model="ruleForm.E1" controls-position="right"></el-input-number>
                     </el-form-item>
@@ -36,6 +39,7 @@ export default {
     data() {
         return {
             ruleForm: {
+                id: '',
                 E1: null,
                 E2: null,
             },
@@ -65,36 +69,37 @@ export default {
             });
         },
         submitForm(formName) {
-            // this.$refs[formName].validate((valid) => {
-            //     if (valid) {
-            //         // axios.post('http://127.0.0.1:8082/book/add',this.ruleForm).then(function (resp){//用function，导致 this 的上下文指向发生了变化
-            //         axios.post('http://127.0.0.1:8082/book/add',this.ruleForm).then((resp)=>{//将 function 改成箭头函数 =>，箭头函数不会改变 this 的指向
-            //             // console.log(resp);
-            //             if (resp.status == 200) {
-            //                 this.$message({
-            //                     message: '数据提交成功！',
-            //                     type: 'success'
-            //                 });
-            //                 this.$router.push({path: '/bookSearch'});
-            //             } else {
-            //                 alert('数据提交失败！');
-            //             }
-            //         }).catch(function (error) {
-            //             console.log(error);
-            //         })
-            //     } else {
-            //         console.log('error submit!!');
-            //         return false;
-            //     }
-            // });
+            this.$refs[formName].validate((valid) => {
+                if (valid) {
+                    console.log(this.ruleForm);
+                    // axios.post('http://127.0.0.1:8082/book/add',this.ruleForm).then(function (resp){//用function，导致 this 的上下文指向发生了变化
+                    axios.post('http://127.0.0.1:8082/parameter/add',this.ruleForm).then((resp)=>{//将 function 改成箭头函数 =>，箭头函数不会改变 this 的指向
+                        if (resp.status == 200) {
+                            this.$message({
+                                message: '数据提交成功！',
+                                type: 'success'
+                            });
+                            this.$router.push({path: '/bookSearch'});
+                        } else {
+                            alert('数据提交失败！');
+                        }
+                    }).catch(function (error) {
+                        console.log(error);
+                    })
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
         }
     },
     created() {
         axios.get('http://127.0.0.1:8082/parameter/list').then((resp) => {
             if (resp.status === 200) {
                 const data = {
-                    E1: resp.data[0].e1,
-                    E2: resp.data[0].e2
+                    id: resp.data[0].id,
+                    E1: resp.data[0].E1,
+                    E2: resp.data[0].E2
                 };
                 this.ruleForm = JSON.parse(JSON.stringify(data));     // 绑定表单
                 this.originalForm = JSON.parse(JSON.stringify(data));  // 保存初始值
