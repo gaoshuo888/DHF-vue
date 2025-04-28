@@ -68,11 +68,14 @@ const routes = [
                         path: '/runoff-params',
                         name: '产流参数设置',
                         component: () => import(/* webpackChunkName: "PageOne" */ '../views/dhf/ParametersRunOff.vue')
+                    },
+                    {
+                        path: '/confluence-params',
+                        name: '汇流参数设置',
+                        component: () => import(/* webpackChunkName: "PageOne" */ '../views/dhf/ParametersConfluence.vue')
                     }
                 ]
             },
-
-
         ]
     },
     {
