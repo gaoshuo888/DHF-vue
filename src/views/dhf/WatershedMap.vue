@@ -17,9 +17,11 @@
                     <h1>DHF模型参数设置</h1>
                 </div>
                 <el-row align="middle" justify="center" type="flex">
-                    <el-button type="primary" @click="goToFlowParams">产流参数</el-button>
-                    <el-button type="success" @click="goToConfluenceParams">汇流参数</el-button>
-                    <el-button type="danger" @click="goToEvaporationParams">蒸发参数</el-button>
+                    <el-button type="primary" @click="goToFlowParams">产流</el-button>
+                    <el-button type="success" @click="goToConfluenceParams">汇流</el-button>
+                    <el-button type="warning" @click="goToEvaporationParams">蒸发</el-button>
+                    <el-button type="info" @click="goToBasinParams">流域</el-button>
+                    <el-button type="danger" @click="programRunning">运行</el-button>
                 </el-row>
                 <router-view></router-view>
             </el-col>
@@ -45,6 +47,16 @@ export default {
                 this.$router.push('/evaporation-params');
             }
         },
+        goToBasinParams() {
+            if (this.$route.path !== '/basin-params') {
+                this.$router.push('/basin-params');
+            }
+        },
+        programRunning(){
+            if (this.$route.path !== '/program-running') {
+                this.$router.push('/program-running');
+            }
+        }
     },
 
 };

@@ -73,9 +73,19 @@ const routes = [
                         path: '/confluence-params',
                         name: '汇流参数设置',
                         component: () => import(/* webpackChunkName: "PageOne" */ '../views/dhf/ParametersConfluence.vue')
+                    },
+                    {
+                        path: '/basin-params',
+                        name: '流域参数设置',
+                        component: () => import(/* webpackChunkName: "PageOne" */ '../views/dhf/ParametersBasin.vue')
                     }
                 ]
             },
+            {
+                path: '/geneticAlgorithms',
+                name: 'GA率定参数',
+                component: () => import(/* webpackChunkName: "PageOne" */ '../views/dhf/GeneticAlgorithms.vue'),
+            }
         ]
     },
     {
