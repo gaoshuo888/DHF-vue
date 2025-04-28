@@ -14,9 +14,9 @@
             <el-col :span="12">
                 <h1 class="is-center">DHF模型参数</h1>
                 <el-form ref="ruleForm" :model="ruleForm" :rules="rules" class="demo-ruleForm" label-width="100px">
-<!--                    <el-form-item label="ID：" prop="id">-->
-<!--                        <el-input-number v-model="ruleForm.id" controls-position="right"></el-input-number>-->
-<!--                    </el-form-item>-->
+                    <!--                    <el-form-item label="ID：" prop="id">-->
+                    <!--                        <el-input-number v-model="ruleForm.id" controls-position="right"></el-input-number>-->
+                    <!--                    </el-form-item>-->
                     <el-form-item label="E1：" prop="E1">
                         <el-input-number v-model="ruleForm.E1" controls-position="right"></el-input-number>
                     </el-form-item>
@@ -26,6 +26,7 @@
                     <el-form-item>
                         <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
                         <el-button type="info" @click="resetForm('ruleForm')">重置</el-button>
+                        <el-button type="info" @click="calculator('ruleForm')">计算</el-button>
                         <el-button type="warning" @click="test()">测试</el-button>
                     </el-form-item>
                 </el-form>
@@ -57,6 +58,23 @@ export default {
         };
     },
     methods: {
+        calculator(formName) {
+            this.$refs[formName].validate((valid) => {
+                if (valid) {
+                    axios.post('http://127.0.0.1:8082/parameter/calculate', this.ruleForm).then((resp) => {
+                        console.log(resp);
+                        if (resp.status == 200) {
+                            alert('计算成功！');
+                        } else {
+                            alert('计算失败！');
+                        }
+                    })
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
+        },
         test() {
             console.log(this.ruleForm);
         },
@@ -73,13 +91,13 @@ export default {
                 if (valid) {
                     console.log(this.ruleForm);
                     // axios.post('http://127.0.0.1:8082/book/add',this.ruleForm).then(function (resp){//用function，导致 this 的上下文指向发生了变化
-                    axios.post('http://127.0.0.1:8082/parameter/add',this.ruleForm).then((resp)=>{//将 function 改成箭头函数 =>，箭头函数不会改变 this 的指向
+                    axios.post('http://127.0.0.1:8082/parameter/add', this.ruleForm).then((resp) => {//将 function 改成箭头函数 =>，箭头函数不会改变 this 的指向
                         if (resp.status == 200) {
                             this.$message({
                                 message: '数据提交成功！',
                                 type: 'success'
                             });
-                            this.$router.push({path: '/bookSearch'});
+                            // this.$router.push({path: '/dhfMap'});不能跳转到当前路由dhfMap.vue
                         } else {
                             alert('数据提交失败！');
                         }
