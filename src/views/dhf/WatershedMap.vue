@@ -31,8 +31,8 @@
 export default {
     methods: {
         goToFlowParams() {
-            if (this.$route.path !== '/parametersE') {//判断当前路由是否为'/parametersE'，因为如果是，就不需要跳转了
-                this.$router.push('/parametersE');
+            if (this.$route.path !== '/runoff-params') {//判断当前路由是否为'/parametersE'，因为如果是，就不需要跳转了
+                this.$router.push('/runoff-params');
             }
         },
         goToConfluenceParams() {

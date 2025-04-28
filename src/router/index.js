@@ -60,17 +60,18 @@ const routes = [
                 component: () => import(/* webpackChunkName: "PageOne" */ '../views/dhf/WatershedMap.vue'),
                 children: [
                     {
-                        path: '/parametersE',
+                        path: '/evaporation-params',
                         name: '蒸发参数设置',
                         component: () => import(/* webpackChunkName: "PageOne" */ '../views/dhf/ParametersE.vue')
+                    },
+                    {
+                        path: '/runoff-params',
+                        name: '产流参数设置',
+                        component: () => import(/* webpackChunkName: "PageOne" */ '../views/dhf/ParametersRunOff.vue')
                     }
                 ]
             },
-            {
-                path: '/parameter',
-                name: '参数设置',
-                component: () => import(/* webpackChunkName: "PageOne" */ '../views/dhf/ParametersE.vue')
-            }
+
 
         ]
     },
