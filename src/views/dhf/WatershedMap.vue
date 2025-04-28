@@ -14,9 +14,9 @@
             <el-col :span="12">
                 <h1 class="is-center">DHF模型参数</h1>
                 <el-form ref="ruleForm" :model="ruleForm" :rules="rules" class="demo-ruleForm" label-width="100px">
-                    <el-form-item label="ID：" prop="id">
-                        <el-input-number v-model="ruleForm.id" controls-position="right"></el-input-number>
-                    </el-form-item>
+<!--                    <el-form-item label="ID：" prop="id">-->
+<!--                        <el-input-number v-model="ruleForm.id" controls-position="right"></el-input-number>-->
+<!--                    </el-form-item>-->
                     <el-form-item label="E1：" prop="E1">
                         <el-input-number v-model="ruleForm.E1" controls-position="right"></el-input-number>
                     </el-form-item>
