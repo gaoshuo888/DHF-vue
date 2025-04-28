@@ -1,6 +1,5 @@
 <template>
     <div>
-        <h1>This is a page one</h1>
         <el-container>
             <el-header style="text-align: right; font-size: 12px">
                 <el-button type="primary" size="small" @click="addBook">添加</el-button>

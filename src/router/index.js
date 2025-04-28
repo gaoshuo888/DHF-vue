@@ -57,7 +57,19 @@ const routes = [
             {
                 path: '/dhfMap',
                 name: '英那河流域',
-                component: () => import(/* webpackChunkName: "PageOne" */ '../views/dhf/WatershedMap.vue')
+                component: () => import(/* webpackChunkName: "PageOne" */ '../views/dhf/WatershedMap.vue'),
+                children: [
+                    {
+                        path: '/parametersE',
+                        name: '蒸发参数设置',
+                        component: () => import(/* webpackChunkName: "PageOne" */ '../views/dhf/ParametersE.vue')
+                    }
+                ]
+            },
+            {
+                path: '/parameter',
+                name: '参数设置',
+                component: () => import(/* webpackChunkName: "PageOne" */ '../views/dhf/ParametersE.vue')
             }
 
         ]

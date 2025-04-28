@@ -17,7 +17,7 @@
             </el-header>
             <el-container>
                 <el-aside style="background-color: rgb(238, 241, 246)" width="200px">
-                    <el-menu router :default-openeds="['0','1']"><!--default-openeds是默认展开的菜单项,index要求为String类型-->
+                    <el-menu router :default-openeds="['2','3']"><!--default-openeds是默认展开的菜单项,index要求为String类型-->
                         <el-submenu v-for="(item, index) in $router.options.routes" :key="index" :index="String(index)" v-if="item.show"><!--routes[ ]，是路由配置项，包含了所有的路由信息-->
                             <template slot="title"><i></i>{{ item.name }}</template>
 <!--        二级标题          -->
