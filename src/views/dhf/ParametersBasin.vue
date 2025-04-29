@@ -9,13 +9,19 @@
                 <template #default="scope">
                     <el-input-number
                             v-model="scope.row.value"
-                            :max="10"
-                            :min="0"
+                            :max="scope.row.max"
+                            :min="scope.row.min"
                             :step="0.1"
                             controls-position="right"
                     />
                 </template>
             </el-table-column>
+            <el-table-column label="范围" width=180 align="center">
+                <template #default="scope">
+                    {{ scope.row.min }} ~ {{ scope.row.max }}
+                </template>
+            </el-table-column>
+
         </el-table>
 
         <div style="margin-top: 20px; text-align: center;">
